@@ -22,8 +22,13 @@ int	func_call(const char *str, va_list ap)
 		err = print_char(va_arg(ap, int));
 	else if (*str == 'i')
 		err = print_int(va_arg(ap, int));
-	else
+	else if (*str == '%')
 		ft_putchar_fd(*str, 1);
+	else
+	{
+		ft_putchar_fd(*str, 1);
+		ft_putchar_fd(*(str - 1), 1);
+	}
 	return (err);
 }
 
