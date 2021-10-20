@@ -1,6 +1,7 @@
 #include "headers/libft.h"
 #include <stdarg.h>
 #include "headers/internal.h"
+#include <wchar.h>
 
 /** todo rename
  * TODO ft_putchar_fd should return error code
@@ -9,19 +10,29 @@
  * @param ap
  * @return
  */
-int	func_call(const char *str, va_list ap)
+int	handle_character(const char *str, va_list ap)
 {
-	int err;
+	int	err;
 
 	err = 0;
 	if (*str == 0)
-		return(-2);
+		return (-2);
 	if (*str == 's')
 		err = print_string(va_arg(ap, char *));
 	else if (*str == 'c')
 		err = print_char(va_arg(ap, int));
 	else if (*str == 'i')
 		err = print_int(va_arg(ap, int));
+	else if (*str == 'd')
+		err = print_long(va_arg(ap, long));
+	else if (*str == 'u')
+		err = print_long(va_arg(ap, unsigned long));
+	else if (*str == 'x')
+		err = print_str_free(get_hex_lower(va_arg(ap, long)));
+	else if (*str == 'X')
+		err = print_str_free(get_hex_upper(va_arg(ap, long)));
+	else if (*str == 'p')
+		err = print_str_free(get_pointer(va_arg(ap, unsigned long)));
 	else if (*str == '%')
 		ft_putchar_fd(*str, 1);
 	else
@@ -34,8 +45,8 @@ int	func_call(const char *str, va_list ap)
 
 int	ft_printf(char *str, ...)
 {
-	va_list ap;
-	int	err;
+	va_list	ap;
+	int		err;
 
 	err = 0;
 	va_start(ap, str);
@@ -43,7 +54,7 @@ int	ft_printf(char *str, ...)
 	{
 		if (*str == '%')
 		{
-			err = func_call((str + 1), ap);
+			err = handle_character((str + 1), ap);
 			if (err == -2)
 				str++;
 			else if (!err)

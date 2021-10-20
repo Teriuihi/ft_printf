@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "../headers/libft.h"
 
 int	print_string(char *s)
@@ -16,4 +17,21 @@ int	print_int(int i)
 {
 	ft_putnbr_fd(i, 1);
 	return (0);
+}
+
+int	print_long(long i)
+{
+	//print long after reworking ft_putnbr_fd
+	return (0);
+}
+
+int	print_str_free(char *s)
+{
+	int	err;
+
+	if (!s)
+		return (-1);
+	err = print_string(s);
+	free(s);
+	return (err);
 }
