@@ -31,7 +31,6 @@ static int	recursion_ul(char *res, unsigned long nbr,
 }
 
 //TODO move to library
-//TODO fix ft_bzero to use ft_memset
 static char	*get_base_str(char *prefix)
 {
 	char	*res;

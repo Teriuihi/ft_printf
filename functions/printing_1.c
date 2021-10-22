@@ -21,7 +21,7 @@ int	print_int(int i)
 
 int	print_long(long i)
 {
-	//print long after reworking ft_putnbr_fd
+	ft_putnbr_fd(i, 1);
 	return (0);
 }
 
