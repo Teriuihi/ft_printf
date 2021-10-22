@@ -4,24 +4,28 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 
 MAIN=ft_printf.c
-FUNCTIONS=printing_1.c
-LIB_FT=ft_bzero.c ft_calloc.c ft_itoa.c ft_memset.c ft_putchar_fd.c \
-ft_putnbr_fd.c ft_putstr_fd.c
+FUNCTIONS=printing_1.c hex.c
 
-FILES=$(addprefix functions/, $(FUNCTIONS)) $(addprefix Libft/, $(LIB_FT)) $(MAIN)
+LIBS=libft/libft.a
+FILES=$(addprefix functions/, $(FUNCTIONS)) $(MAIN)
 FILES_OBJ=$(FILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(FILES_OBJ)
-	ar -rcs $(NAME) $(FILES_OBJ)
+lib_ft:
+	$(MAKE) -C libft/
+
+$(NAME): $(FILES_OBJ) lib_ft
+	ar -rcs $(NAME) $(FILES_OBJ) $(LIBS)
 
 clean:
 	$(RM) $(FILES_OBJ)
+	$(MAKE) -C libft/ clean
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) -C libft/ fclean
 
 re: fclean $(NAME)
 
-.PHONY: make all clean fclean re
+.PHONY: make all clean fclean re lib_ft
