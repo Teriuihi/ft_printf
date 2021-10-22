@@ -13,7 +13,7 @@ FILES_OBJ=$(FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(FILES_OBJ)
-	ar -rcs $(NAME) $(FILES_OBJ) functions/libft.a
+	ar -rcs $(NAME) $(FILES_OBJ)
 
 clean:
 	$(RM) $(FILES_OBJ)
