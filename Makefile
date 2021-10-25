@@ -4,7 +4,7 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 
 MAIN=ft_printf.c
-FUNCTIONS=printing_1.c hex.c
+FUNCTIONS=printing_1.c hex.c hex_util.c
 
 LIBS=libft/libft.a
 FILES=$(addprefix functions/, $(FUNCTIONS)) $(MAIN)
