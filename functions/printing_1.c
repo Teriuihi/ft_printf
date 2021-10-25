@@ -1,6 +1,11 @@
 #include <stdlib.h>
 #include "../headers/libft.h"
 
+/**
+ * Prints string to standard output
+ * @param s
+ * @return
+ */
 int	print_string(char *s)
 {
 	ft_putstr_fd(s, 1);

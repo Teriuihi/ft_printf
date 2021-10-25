@@ -1,7 +1,13 @@
-#include <stdlib.h>
+#include "../headers/libft.h"
 
-char	*ft_memset(void *b, int c, size_t len);
-
+/**
+ * Calculates the amount of characters that would be needed to store the given
+ * 	integer as a char array
+ *
+ * @param	nb	Number to get the length of
+ *
+ * @return	The length of the number (aka amount of characters it would use)
+ */
 static int	int_len(long nb)
 {
 	int	len;
@@ -15,6 +21,13 @@ static int	int_len(long nb)
 	return (len + 1);
 }
 
+/**
+ * Fills the given array with the digits the given integer consists of
+ *
+ * @param	a	The null terminated array (with at least len + 1 size) to fill
+ * @param	n	The long to fill the array with
+ * @param	len	The length of the given integer
+ */
 static void	fill(char *a, long n, int len)
 {
 	int	tmp;
@@ -30,6 +43,13 @@ static void	fill(char *a, long n, int len)
 	}
 }
 
+/**
+ * Stores an integer in a malloced char array
+ *
+ * @param	n	Long to store
+ *
+ * @return	A malloced array containing the integer as a string
+ */
 char	*ft_itoa(long n)
 {
 	char	*a;

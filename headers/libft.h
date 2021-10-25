@@ -1,6 +1,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <wchar.h>
+# include <stdlib.h>
 size_t	ft_strlen(const char *c);
 char	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);

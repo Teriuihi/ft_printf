@@ -1,6 +1,10 @@
-#include <stdlib.h>
 #include "../headers/libft.h"
 
+/**
+ * Writes a number to the specified file descriptor
+ * @param	n	The number to write
+ * @param	fd	The file descriptor to write to
+ */
 void	ft_putnbr_fd(long n, int fd)
 {
 	char	*s;

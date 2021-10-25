@@ -1,8 +1,12 @@
 #include <unistd.h>
-#include <wchar.h>
+#include "../headers/libft.h"
 
-size_t	ft_strlen(char *c);
-
+/**
+ * Writes a string to the specified file descriptor
+ *
+ * @param	s	String to write
+ * @param	fd	File descriptor to write to
+ */
 void	ft_putstr_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));

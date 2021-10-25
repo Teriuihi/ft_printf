@@ -1,9 +1,26 @@
 #include "headers/libft.h"
-#include <stdarg.h>
 #include "headers/internal.h"
-#include <wchar.h>
+#include <stdarg.h>
 
-/** todo rename
+int	handle_character_2(const char *str, va_list ap, int err)
+{
+	if (*str == 'x')
+		err = print_str_free(get_hex_lower(va_arg(ap, long)));
+	else if (*str == 'X')
+		err = print_str_free(get_hex_upper(va_arg(ap, long)));
+	else if (*str == 'p')
+		err = print_str_free(get_pointer(va_arg(ap, unsigned long)));
+	else if (*str == '%')
+		ft_putchar_fd(*str, 1);
+	else
+	{
+		ft_putchar_fd(*str, 1);
+		ft_putchar_fd(*(str - 1), 1);
+	}
+	return (err);
+}
+
+/**
  * TODO ft_putchar_fd should return error code
  * Prints argument (converted)
  * @param str
@@ -27,22 +44,18 @@ int	handle_character(const char *str, va_list ap)
 		err = print_long(va_arg(ap, long));
 	else if (*str == 'u')
 		err = print_long(va_arg(ap, unsigned long));
-	else if (*str == 'x')
-		err = print_str_free(get_hex_lower(va_arg(ap, long)));
-	else if (*str == 'X')
-		err = print_str_free(get_hex_upper(va_arg(ap, long)));
-	else if (*str == 'p')
-		err = print_str_free(get_pointer(va_arg(ap, unsigned long)));
-	else if (*str == '%')
-		ft_putchar_fd(*str, 1);
 	else
-	{
-		ft_putchar_fd(*str, 1);
-		ft_putchar_fd(*(str - 1), 1);
-	}
+		return (handle_character_2(str, ap, err));
 	return (err);
 }
 
+/**
+ * Print a string to the standard output along with any specified arguments
+ * 	at specified locations
+ * @param	str	The string to print
+ * @param	...	Any arguments that are requested to be printed
+ * @return
+ */
 int	ft_printf(char *str, ...)
 {
 	va_list	ap;
