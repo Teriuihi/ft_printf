@@ -8,6 +8,8 @@
  */
 int	print_string(char *s)
 {
+	if (!s)
+		return (ft_putstr_fd("(null)", 1));
 	return (ft_putstr_fd(s, 1));
 }
 

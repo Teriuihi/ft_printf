@@ -6,7 +6,6 @@ RM=rm -f
 MAIN=ft_printf.c
 FUNCTIONS=printing_1.c hex.c hex_util.c
 
-LIBS=libft/libft.a
 FILES=$(addprefix functions/, $(FUNCTIONS)) $(MAIN)
 FILES_OBJ=$(FILES:.c=.o)
 
@@ -16,7 +15,8 @@ lib_ft:
 	$(MAKE) -C libft/
 
 $(NAME): $(FILES_OBJ) lib_ft
-	ar -rcs $(NAME) $(FILES_OBJ) $(LIBS)
+	mv libft/libft.a $(NAME)
+	ar -rcs $(NAME) $(FILES_OBJ)
 
 clean:
 	$(RM) $(FILES_OBJ)

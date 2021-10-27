@@ -38,10 +38,8 @@ int	handle_character(const char *str, va_list ap)
 		len = print_string(va_arg(ap, char *));
 	else if (*str == 'c')
 		len = print_char(va_arg(ap, int));
-	else if (*str == 'i')
+	else if (*str == 'i' || *str == 'd')
 		len = print_int(va_arg(ap, int));
-	else if (*str == 'd')
-		len = print_long(va_arg(ap, long));
 	else if (*str == 'u')
 		len = print_long(va_arg(ap, unsigned long));
 	else
