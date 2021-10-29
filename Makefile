@@ -4,7 +4,7 @@ CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 
 MAIN=ft_printf.c
-FUNCTIONS=printing_1.c hex.c hex_util.c
+FUNCTIONS=printing.c hex.c hex_util.c
 
 FILES=$(addprefix functions/, $(FUNCTIONS)) $(MAIN)
 FILES_OBJ=$(FILES:.c=.o)

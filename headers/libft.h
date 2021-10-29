@@ -8,5 +8,4 @@ int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_putnbr_fd(long n, int fd);
 char	*ft_itoa(long n);
-void	ft_bzero(void *s, size_t n);
 #endif

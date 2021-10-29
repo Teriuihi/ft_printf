@@ -1,7 +1,7 @@
 #include "../headers/libft.h"
 
 /**
- * Set's an area of memory to the specified value
+ * Sets an area of memory to the specified value
  *
  * @param	b	Array of bytes to modify
  * @param	c	Value to set each byte to

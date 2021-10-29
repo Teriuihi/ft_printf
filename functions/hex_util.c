@@ -29,12 +29,6 @@ static int	recursion_ul(char *res, unsigned long nbr, char *characters,
 	return (size);
 }
 
-/** TODO move to library
- *
- * @param	prefix
- *
- * @return
- */
 static char	*get_base_str(char *prefix)
 {
 	char	*res;
@@ -45,10 +39,9 @@ static char	*get_base_str(char *prefix)
 		pref_len = ft_strlen(prefix);
 	else
 		pref_len = 0;
-	res = ft_calloc(pref_len + 8 + 1, sizeof(char));
+	res = ft_calloc(pref_len + 16 + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	ft_bzero(res, pref_len + 8 + 1);
 	tmp = res;
 	while (prefix && *prefix)
 	{
@@ -59,7 +52,7 @@ static char	*get_base_str(char *prefix)
 	return (res);
 }
 
-/** TODO move to library
+/**
  * Converts any base 10 number to any other base
  *
  * @param	nbr			Number to convert
@@ -81,7 +74,10 @@ char	*ft_get_base(long nbr, char *characters, char *prefix)
 	tmp = res;
 	while (*tmp)
 		tmp++;
-	recursion(tmp, nbr, characters, 0);
+	if (nbr)
+		recursion(tmp, nbr, characters, 0);
+	else
+		*tmp = characters[0];
 	return (res);
 }
 
@@ -96,6 +92,9 @@ char	*ft_get_base_ul(unsigned long nbr, char *characters, char *prefix)
 	tmp = res;
 	while (*tmp)
 		tmp++;
-	recursion_ul(tmp, nbr, characters, 0);
+	if (nbr)
+		recursion_ul(tmp, nbr, characters, 0);
+	else
+		*tmp = characters[0];
 	return (res);
 }

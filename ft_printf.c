@@ -5,9 +5,9 @@
 int	handle_character_2(const char *str, va_list ap, int err)
 {
 	if (*str == 'x')
-		err = print_str_free(get_hex_lower(va_arg(ap, long)));
+		err = print_str_free(get_hex_lower(va_arg(ap, unsigned int)));
 	else if (*str == 'X')
-		err = print_str_free(get_hex_upper(va_arg(ap, long)));
+		err = print_str_free(get_hex_upper(va_arg(ap, unsigned int)));
 	else if (*str == 'p')
 		err = print_str_free(get_pointer(va_arg(ap, unsigned long)));
 	else if (*str == '%')
@@ -21,7 +21,6 @@ int	handle_character_2(const char *str, va_list ap, int err)
 }
 
 /**
- * TODO ft_putchar_fd should return error code
  * Prints argument (converted)
  * @param str
  * @param ap
@@ -39,9 +38,9 @@ int	handle_character(const char *str, va_list ap)
 	else if (*str == 'c')
 		len = print_char(va_arg(ap, int));
 	else if (*str == 'i' || *str == 'd')
-		len = print_int(va_arg(ap, int));
+		len = print_long(va_arg(ap, int));
 	else if (*str == 'u')
-		len = print_long(va_arg(ap, unsigned long));
+		len = print_long(va_arg(ap, unsigned int));
 	else
 		return (handle_character_2(str, ap, len));
 	return (len);
@@ -69,7 +68,7 @@ int	ft_printf(const char * str, ...)
 		if (*str == '%')
 		{
 			len = handle_character((str + 1), ap);
-			if (len == -2) //TODO handle stuff
+			if (len == -2)
 				str++;
 			else if (len >= 0)
 			{

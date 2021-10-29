@@ -18,11 +18,6 @@ int	print_char(int c)
 	return (ft_putchar_fd((char)c, 1));
 }
 
-int	print_int(int i)
-{
-	return (ft_putnbr_fd(i, 1));
-}
-
 int	print_long(long i)
 {
 	return (ft_putnbr_fd(i, 1));

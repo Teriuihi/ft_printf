@@ -2,7 +2,7 @@ NAME=libft.a
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
-FILES=ft_bzero.c ft_calloc.c ft_itoa.c ft_memset.c ft_putchar_fd.c \
+FILES=ft_calloc.c ft_itoa.c ft_memset.c ft_putchar_fd.c \
 ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
 FILES_OBJ=$(FILES:.c=.o)
 
