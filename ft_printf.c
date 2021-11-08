@@ -46,6 +46,13 @@ int	handle_character(const char *str, va_list ap)
 	return (len);
 }
 
+void	handle_else(const char **str, int *total_len)
+{
+	ft_putchar_fd(**str, 1);
+	(*str)++;
+	(*total_len)++;
+}
+
 /**
  * Print a string to the standard output along with any specified arguments
  * 	at specified locations
@@ -54,7 +61,7 @@ int	handle_character(const char *str, va_list ap)
  *
  * @return	amount of characters printed or negative numbers on failure
  */
-int	ft_printf(const char * str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		len;
@@ -77,11 +84,7 @@ int	ft_printf(const char * str, ...)
 			}
 		}
 		else
-		{
-			ft_putchar_fd(*str, 1);
-			str++;
-			total_len++;
-		}
+			handle_else(&str, &total_len);
 	}
 	return (total_len);
 }
