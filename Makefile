@@ -5,17 +5,17 @@ RM=rm -f
 
 MAIN=ft_printf.c
 FUNCTIONS=printing.c hex.c hex_util.c
+LIB_FT=ft_calloc.c ft_itoa.c ft_memset.c ft_putchar_fd.c \
+ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
 
 FILES=$(addprefix functions/, $(FUNCTIONS)) $(MAIN)
-FILES_OBJ=$(FILES:.c=.o)
+FILES_OBJ=$(FILES:%.c=%.o) $(LIB_FT:%.c:%.o)
 
 all: $(NAME)
 
-lib_ft:
+$(NAME): $(FILES_OBJ)
 	$(MAKE) -C libft/
-
-$(NAME): $(FILES_OBJ) lib_ft
-	mv libft/libft.a $(NAME)
+	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(FILES_OBJ)
 
 clean:
@@ -28,4 +28,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: make all clean fclean re lib_ft
+.PHONY: make all clean fclean re
